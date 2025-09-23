@@ -131,22 +131,50 @@ a:focus{
   background: transparent;
 }
 
-/* Navbar móvil */
+/* ===== Navbar móvil ===== */
 @media only screen and (max-width:768px){
-  body { padding-top: 90px; } /* reduce hueco en móviles */
+  /* ajusta el espacio superior total en móviles */
+  body { padding-top: 90px; }
+
+  /* navbar: mismo gris que en escritorio */
   #main-nav.navbar-default {
-    background: #FFFFFF;
-    padding: 1px 0 15px;
+    background: #474545;            /* antes: #FFFFFF */
+    padding: 8px 0 12px;
     border-bottom: 1px solid rgba(0,0,0,.06);
   }
+
+  /* fondo del menú colapsado (desplegable) */
+  #main-nav .navbar-collapse { 
+    background: #474545;
+  }
+
+  /* botón hamburguesa visible sobre fondo oscuro */
+  .navbar-default .navbar-toggle { 
+    border-color: transparent; 
+    margin-top: 6px;
+  }
+  .navbar-default .navbar-toggle .icon-bar { 
+    background-color: #fff; 
+  }
+
+  /* links del menú en móvil */
   #main-nav.navbar-default .navbar-nav > li > a{
     padding-top: 12px;
     padding-bottom: 12px;
     font-size: 16px;
+    color: #fff;                     /* antes: var(--brand) */
   }
-  .navbar-default .navbar-nav>li>a{ color: var(--brand); }
 
-  /* topbar + nav contenedores 100% */
+  /* estados activo/hover en móvil (sin banda superior) */
+  #main-nav.navbar-default .navbar-nav > li.active > a,
+  #main-nav.navbar-default .navbar-nav > li.open > a,
+  #main-nav.navbar-default .navbar-nav > li:hover > a{
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    border-top-color: transparent;
+  }
+
+  /* contenedores a 100% */
   #topbar .container,
   #main-nav .container{
     width: 100% !important;
@@ -156,6 +184,7 @@ a:focus{
     overflow: hidden !important;
   }
 
+  /* logo un poco más pequeño en móvil */
   .navbar.navbar-default .navbar-brand{ padding: 10px 14px !important; }
   .brand-logo{ height: 40px !important; width: auto; }
 }
