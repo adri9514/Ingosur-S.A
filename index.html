@@ -1,377 +1,312 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="webthemez">
-    <title>Ingosur S.A.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ingosur S.A. — Tejidos estrechos técnicos desde 1989: cintas elásticas y rígidas, trencillas, cinchas para mueble y cordones trenzados.">
+  <meta name="author" content="webthemez">
+  <title>Ingosur S.A.</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/slider-style.css">
-    <link rel="stylesheet" href="css/slider-custom.css">
+  <!-- CSS base -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/animate.min.css" rel="stylesheet">
 
-    <!-- Google Fonts por HTTPS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Slider -->
+  <link rel="stylesheet" href="css/slider-style.css">
+  <link rel="stylesheet" href="css/slider-custom.css">
 
-    <!-- Tu CSS al final -->
-    <link href="css/styles.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <!-- Tu CSS -->
+  <link href="css/styles.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="css/slider-style.css" />
-    <link rel="stylesheet" type="text/css" href="css/slider-custom.css" />
-    <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
-    <link rel="icon" type="image/png" sizes="32x32" href="images/iconologo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/iconologo.png?v=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/iconologo.png?v=1">
-
-
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/iconologo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/iconologo.png?v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/iconologo.png?v=1">
 </head>
 
-<!-- Modal mapa grande -->
-<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="border:0;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="mapModalLabel">Ubicación Ingosur</h4>
-            </div>
-            <div class="modal-body" style="padding:0;">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item"
-                        src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=16&output=embed"
-                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
-
 <body id="home">
-    <!-- Topbar -->
-    <div id="topbar">
-        <div class="container">
-            <div class="topbar-left">
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span class="topbar-hours">Horario : Lun - Vie, 08:00 - 19:00</span>
-            </div>
-            <div class="topbar-right">
-                <span class="topbar-follow">Síguenos :</span>
-                <a href="https://www.facebook.com/people/Ingosur/61556179112892/" target="_blank" rel="noopener"
-                    aria-label="Facebook">
-                    <i class="fa fa-facebook"></i>
-                </a>
-            </div>
+  <!-- Modal mapa grande -->
+  <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="border:0;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="mapModalLabel">Ubicación Ingosur</h4>
         </div>
+        <div class="modal-body" style="padding:0;">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item"
+              src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=16&output=embed"
+              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- /Topbar -->
-    <header id="header">
-        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#home" aria-label="Ingosur">
-                        <img src="images/logo-ingosur.png" alt="Ingosur" class="brand-logo">
-                    </a>
+  </div>
 
-                </div>
+  <!-- Topbar -->
+  <div id="topbar">
+    <div class="container">
+      <div class="topbar-left">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+        <span class="topbar-hours">Horario : Lun - Vie, 08:00 - 19:00</span>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-follow">Síguenos :</span>
+        <a href="https://www.facebook.com/people/Ingosur/61556179112892/" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- /Topbar -->
 
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li class="scroll active"><a href="#home">Inicio</a></li>
-                        <li class="scroll"><a href="#services">Empresa</a></li>
-                        <li class="scroll"><a href="#about">Productos</a></li>
-                        <li class="scroll"><a href="#our-team">Nuestro equipo</a></li>
-                        <li><a class="scroll" href="#contact-us">Contacto</a></li>
-                    </ul>
-                </div>
-            </div><!--/.container-->
-        </nav><!--/nav-->
-    </header><!--/header-->
-
-    <section class="demo-2">
-        <div id="slider" class="sl-slider-wrapper">
-
-            <div class="sl-slider">
-
-                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25"
-                    data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-1"></div>
-
-                    </div>
-                </div>
-
-                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15"
-                    data-slice1-scale="1.5" data-slice2-scale="1.5">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-2"></div>
-
-                    </div>
-                </div>
-
-                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3"
-                    data-slice1-scale="2" data-slice2-scale="1">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-3"></div>
-
-                    </div>
-                </div>
-            </div><!-- /sl-slider -->
-
-            <nav id="nav-dots" class="nav-dots">
-                <span class="nav-dot-current"></span>
-                <span></span>
-                <span></span>
-            </nav>
-
-        </div><!-- /slider-wrapper -->
-
-    </section><!--/#main-slider-->
-
-    <section id="services">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">Empresa</h2>
-                <p class="wow fadeInDown">Especialistas en Tejidos Estrechos Técnicos desde 1989
-                </p>
-            </div>
-            <div class="empresa-extra wow fadeInUp" data-wow-delay=".1s">
-                <p>
-                    INGOSUR, fundada en 1989, surgió como respuesta a la creciente demanda de productos para la
-                    incipiente industria textil en nuestra región. A lo largo de los años, hemos evolucionado y
-                    diversificado, incorporando nueva maquinaria y tecnologías para atender diversos sectores
-                    estratégicos. Esta flexibilidad nos ha consolidado en el mercado nacional, destacando por nuestra
-                    capacidad de adaptación a las necesidades cambiantes de nuestros clientes.
-
-                    <br>
-
-                    <br><strong class="empresa-titulo">Especialización y Variedad de Productos</strong><br>
-
-                    <br>
-
-                    Nos especializamos en la fabricación de cintas elásticas y rígidas, trencillas, cinchas para el
-                    mueble tapizado, cinchas a medida con ganchos para bastidores y extraíbles, así como cordones
-                    trenzados y de aguja, tanto rígidos como elásticos.
-                </p>
-            </div>
-        </div><!--/.container-->
-    </section><!--/#services-->
-
-    <section id="about">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">Productos</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <img class="img-responsive img-productos" src="images/01.jpg" alt="Productos Ingosur">
-                </div>
-            </div>
-
-        </div><!-- /.container -->
-    </section><!-- /#about -->
-
-    <section id="our-team">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">Nuestro equipo</h2>
-            </div>
-
-            <!-- Imagen grande del equipo -->
-            <div class="team-hero wow fadeInUp" data-wow-delay=".1s">
-                <img src="images/equipo.jpg" alt="Equipo de Ingosur" class="team-hero-img">
-            </div>
-        </div>
-    </section><!--/#our-team-->
-
-    <section id="contact-us">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title wow fadeInDown">Contacto</h2>
-                <p class="wow fadeInDown">No dudes en ponerte en contacto con nosotros a través de los siguientes medios
-                    <br> ¡Estamos aquí para atender tus consultas y necesidades!
-                </p>
-            </div>
+  <header id="header">
+    <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Abrir navegación">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#home" aria-label="Ingosur">
+            <img src="images/logo-ingosur.png" alt="Ingosur" class="brand-logo">
+          </a>
         </div>
 
-        <div class="container contact-info">
-            <div class="row">
-                <div class="col-sm-4 col-md-4">
-                    <div class="contact-form">
-                        <h3>Información de contacto</h3>
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="scroll active"><a href="#home">Inicio</a></li>
+            <li class="scroll"><a href="#services">Empresa</a></li>
+            <li class="scroll"><a href="#about">Productos</a></li>
+            <li class="scroll"><a href="#our-team">Nuestro equipo</a></li>
+            <li><a class="scroll" href="#contact-us">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-                        <address>
-                            <strong>Avenida de Bruselas, 1</strong><br>
-                            23740, Andújar (Jaén)<br>
-                            España<br>
-                            <abbr title="Phone">Tfno:</abbr> 629240021
-                        </address>
+  <section class="demo-2">
+    <div id="slider" class="sl-slider-wrapper">
+      <div class="sl-slider">
+        <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+          <div class="sl-slide-inner"><div class="bg-img bg-img-1"></div></div>
+        </div>
 
-                        <!-- Mapa pequeño + botón ampliar -->
-                        <div class="mini-mapa">
-                            <div class="mini-mapa-frame">
-                                <iframe
-                                    src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=15&output=embed"
-                                    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                            <button class="btn btn-default btn-sm mapa-btn" data-toggle="modal" data-target="#mapModal">
-                                📍 Ver mapa grande
-                            </button>
-                        </div>
+        <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+          <div class="sl-slide-inner"><div class="bg-img bg-img-2"></div></div>
+        </div>
 
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-8">
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Tu email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="message" class="form-control" rows="8" placeholder="Escribe tu mensaje"
-                                    required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-                        </form>
-                    </div>
+        <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+          <div class="sl-slide-inner"><div class="bg-img bg-img-3"></div></div>
+        </div>
+      </div>
 
-                    <script>
-                        const TO = "ingosursa@gmail.com";
+      <nav id="nav-dots" class="nav-dots">
+        <span class="nav-dot-current"></span>
+        <span></span>
+        <span></span>
+      </nav>
+    </div>
+  </section>
 
-                        document.getElementById("contactForm").addEventListener("submit", (e) => {
-                            e.preventDefault();
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title wow fadeInDown">Empresa</h2>
+        <p class="wow fadeInDown">Especialistas en Tejidos Estrechos Técnicos desde 1989</p>
+      </div>
+      <div class="empresa-extra wow fadeInUp" data-wow-delay=".1s">
+        <p>
+          INGOSUR, fundada en 1989, surgió como respuesta a la creciente demanda de productos para la incipiente industria textil en nuestra región. 
+          A lo largo de los años, hemos evolucionado y diversificado, incorporando nueva maquinaria y tecnologías para atender diversos sectores estratégicos. 
+          Esta flexibilidad nos ha consolidado en el mercado nacional, destacando por nuestra capacidad de adaptación a las necesidades cambiantes de nuestros clientes.
+          <br><br><strong class="empresa-titulo">Especialización y Variedad de Productos</strong><br><br>
+          Nos especializamos en la fabricación de cintas elásticas y rígidas, trencillas, cinchas para el mueble tapizado, cinchas a medida con ganchos para bastidores y extraíbles, 
+          así como cordones trenzados y de aguja, tanto rígidos como elásticos.
+        </p>
+      </div>
+    </div>
+  </section>
 
-                            const f = e.target;
-                            const subject = f.subject.value.trim();
-                            const message = f.message.value.trim();
-                            if (!subject || !message) return;
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title wow fadeInDown">Productos</h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <img class="img-responsive img-productos" src="images/01.jpg" alt="Productos Ingosur" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
 
-                            const mailto = `mailto:${encodeURIComponent(TO)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  <section id="our-team">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title wow fadeInDown">Nuestro equipo</h2>
+      </div>
+      <div class="team-hero wow fadeInUp" data-wow-delay=".1s">
+        <img src="images/equipo.jpg" alt="Equipo de Ingosur" class="team-hero-img" loading="lazy">
+      </div>
+    </div>
+  </section>
 
-                            // 1) iOS: intenta abrir la app de Gmail si existe
-                            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                            if (isiOS) {
-                                const gmailIOS = `googlegmail://co?to=${encodeURIComponent(TO)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-                                // Intento app Gmail (iOS). Si no está instalada, caemos a mailto y luego a Gmail web.
-                                window.location.href = gmailIOS;
-                                setTimeout(() => window.location.href = mailto, 350);
-                                setTimeout(() => {
-                                    const gmailWeb = "https://mail.google.com/mail/?extsrc=mailto&url=" + encodeURIComponent(mailto);
-                                    window.location.href = gmailWeb;
-                                }, 700);
-                                return;
-                            }
+  <section id="contact-us">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title wow fadeInDown">Contacto</h2>
+        <p class="wow fadeInDown">
+          No dudes en ponerte en contacto con nosotros a través de los siguientes medios<br>
+          ¡Estamos aquí para atender tus consultas y necesidades!
+        </p>
+      </div>
+    </div>
 
-                            // 2) Android y resto: primero mailto (debería abrir la app por defecto)
-                            window.location.href = mailto;
-
-                            // 3) Si el navegador no cambió de página (bloqueo/handler web), fuerza Gmail web en COMPOSE
-                            setTimeout(() => {
-                                const gmailWeb = "https://mail.google.com/mail/?extsrc=mailto&url=" + encodeURIComponent(mailto);
-                                window.location.href = gmailWeb;
-                            }, 400);
-                        });
-                    </script>
-
-                </div>
+    <div class="container contact-info">
+      <div class="row">
+        <div class="col-sm-4 col-md-4">
+          <div class="contact-form">
+            <h3>Información de contacto</h3>
+            <address>
+              <strong>Avenida de Bruselas, 1</strong><br>
+              23740, Andújar (Jaén)<br>
+              España<br>
+              <abbr title="Phone">Tfno:</abbr> 629240021
+            </address>
+            <div class="mini-mapa">
+              <div class="mini-mapa-frame">
+                <iframe src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=15&output=embed"
+                  allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <button class="btn btn-default btn-sm mapa-btn" data-toggle="modal" data-target="#mapModal">📍 Ver mapa grande</button>
             </div>
+          </div>
         </div>
-        </div>
-    </section><!--/#bottom-->
 
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2025 Creado por
-                    <a target="_blank" href="https://github.com/adri9514"
-                        title="GitHub de adri9514"><strong>adri9514.github</strong></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <div class="col-sm-8 col-md-8">
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Tu email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
+              </div>
+              <div class="form-group">
+                <textarea name="message" class="form-control" rows="8" placeholder="Escribe tu mensaje" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            </form>
+          </div>
 
-    <script src="js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+          <script>
+            const TO = "ingosursa@gmail.com";
+            document.getElementById("contactForm").addEventListener("submit", (e) => {
+              e.preventDefault();
+              const f = e.target;
+              const subject = f.subject.value.trim();
+              const message = f.message.value.trim();
+              if (!subject || !message) return;
 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mousescroll.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.ba-cond.min.js"></script>
-    <script src="js/jquery.slitslider.js"></script>
+              const mailto = `mailto:${encodeURIComponent(TO)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
 
-    <!-- Sustituye slitslider-custom.js por este bloque o deja slitslider-custom.js vacío -->
-    <script>
-        $(function () {
-            var $wrapper = $('#slider');
-            var $track = $wrapper.find('.sl-slider'); // pista interna
-            var $dots = $('#nav-dots > span');
+              const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+              if (isiOS) {
+                const gmailIOS = `googlegmail://co?to=${encodeURIComponent(TO)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+                window.location.href = gmailIOS;
+                setTimeout(() => window.location.href = mailto, 350);
+                setTimeout(() => {
+                  const gmailWeb = "https://mail.google.com/mail/?extsrc=mailto&url=" + encodeURIComponent(mailto);
+                  window.location.href = gmailWeb;
+                }, 700);
+                return;
+              }
 
-            var slider = $wrapper.slitslider({
-                autoplay: true,
-                interval: 5000,
-                onBeforeChange: function (slide, pos) {
-                    $dots.removeClass('nav-dot-current');
-                    $dots.eq(pos).addClass('nav-dot-current');
-                }
+              window.location.href = mailto;
+              setTimeout(() => {
+                const gmailWeb = "https://mail.google.com/mail/?extsrc=mailto&url=" + encodeURIComponent(mailto);
+                window.location.href = gmailWeb;
+              }, 400);
             });
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // Dots
-            $dots.each(function (i) {
-                $(this).on('click', function (e) {
-                    e.preventDefault();
-                    if (!slider.isActive()) {
-                        $dots.removeClass('nav-dot-current');
-                        $(this).addClass('nav-dot-current');
-                    }
-                    slider.jump(i + 1);
-                });
-            });
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          &copy; 2025 Creado por
+          <a target="_blank" href="https://github.com/adri9514" title="GitHub de adri9514" rel="noopener"><strong>adri9514.github</strong></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-            // Swipe: pista interna (más fiable) + wrapper como respaldo
-            var swipeOpts = {
-                allowPageScroll: 'vertical',
-                threshold: 30, // sensibilidad
-                swipe: function (event, direction) {
-                    if (direction === 'left') slider.next();
-                    if (direction === 'right') slider.previous();
-                }
-            };
-            $track.swipe(swipeOpts);
-            $wrapper.swipe(swipeOpts); // fallback por si algún overlay tapa la pista
+  <!-- JS al final -->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/jquery.ba-cond.min.js"></script>
+  <script src="js/jquery.slitslider.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+
+  <!-- Init Slider -->
+  <script>
+    $(function () {
+      var $wrapper = $('#slider');
+      var $track = $wrapper.find('.sl-slider');
+      var $dots = $('#nav-dots > span');
+
+      var slider = $wrapper.slitslider({
+        autoplay: true,
+        interval: 5000,
+        onBeforeChange: function (slide, pos) {
+          $dots.removeClass('nav-dot-current');
+          $dots.eq(pos).addClass('nav-dot-current');
+        }
+      });
+
+      $dots.each(function (i) {
+        $(this).on('click', function (e) {
+          e.preventDefault();
+          if (!slider.isActive()) {
+            $dots.removeClass('nav-dot-current');
+            $(this).addClass('nav-dot-current');
+          }
+          slider.jump(i + 1);
         });
-    </script>
+      });
 
-    <script src="js/custom-scripts.js"></script>
+      var swipeOpts = {
+        allowPageScroll: 'vertical',
+        threshold: 30,
+        swipe: function (event, direction) {
+          if (direction === 'left') slider.next();
+          if (direction === 'right') slider.previous();
+        }
+      };
+      $track.swipe(swipeOpts);
+      $wrapper.swipe(swipeOpts);
+    });
+  </script>
 
+  <script src="js/custom-scripts.js"></script>
 </body>
-
 </html>
