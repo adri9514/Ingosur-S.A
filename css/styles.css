@@ -1114,55 +1114,77 @@ font-size: var(--topbar-fs);
   max-width: 1400px;          /* o 1600px/100% si la quieres aún mayor */
 }
 
-/* ==== Parche global anti scroll lateral en móvil ==== */
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
+/* ====== FIX GLOBAL anti scroll lateral ====== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-/* Las imágenes nunca deben superar el ancho del contenedor */
-img,
-.img-responsive {
-  max-width: 100%;
-  height: auto;
-}
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
 
-/* Evita que contenedores saquen 1-2px extra por padding/transform */
+/* contenedores que a veces se salen 1–2px */
 .container,
+.row,
 #topbar,
 #main-nav,
 .navbar,
+.demo-2,
 .sl-slider-wrapper,
-.sl-slide,
-.bg-img {
-  max-width: 100%;
-  overflow-x: hidden;
-}
+.sl-slider,
+.sl-slide { max-width: 100vw; overflow-x: hidden; }
 
-/* ==== NAV / TOPBAR: reducir paddings y logo en móvil ==== */
+/* ====== TOPBAR + NAV en móvil: menos padding/ancho estricto ====== */
 @media (max-width: 768px){
-  /* ya pones --topbar-h:40px; ajustamos el padding-top del body */
-  body { padding-top: calc(56px + var(--topbar-h)); }
-
-  .navbar.navbar-default .navbar-brand { padding: 12px 16px; }
-  .brand-logo { height: 40px; }
-
-  #main-nav.navbar-default .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
+  #topbar .container,
+  #main-nav .container{
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow: hidden !important;
   }
+
+  .navbar.navbar-default .navbar-brand{ padding: 10px 14px !important; }
+  .brand-logo{ height: 40px !important; width: auto; }
 }
 
-/* ==== PRODUCTOS: que no se desborde en móvil ==== */
+/* ====== SLIDER (SlitSlider) — evita desbordes ====== */
+.sl-slider-wrapper,
+.sl-slider,
+.sl-slide { width: 100vw !important; }
+
+.bg-img{
+  /* estas capas suelen tener tamaños absolutos raros */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 56vw;                    /* ratio aproximado; ajústalo si quieres */
+  left: 50% !important;            /* centrado real */
+  transform: translateX(-50%) !important;
+  background-position: center center !important;
+  background-size: cover !important;
+}
+
+/* ====== PRODUCTOS — que no se salga en móvil ====== */
 @media (max-width: 992px){
+  #about .container,
+  #about .row{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   #about .img-productos{
-    width: 100% !important;     /* antes: 150% */
-    max-width: 100% !important; /* evita que sobresalga */
-    margin: 0 auto;
-    display: block;
+    width: 100% !important;        /* antes 150% causaba el desborde */
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
   }
 }
+
+/* por si algún elemento deja “bordes blancos” */
+body { background-color: #fff; }
 
 /* (opcional) slider: pequeños ajustes para evitar 1px fantasma */
 .sl-slider-wrapper, .sl-slider {
