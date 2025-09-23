@@ -1,32 +1,31 @@
+/* ===== Fallback sin JS para SlitSlider ===== */
+
+/* Mostrar el contenido completo aunque no haya recortes/animaciones */
 .sl-slider-wrapper {
-	overflow: visible !important;
-	margin: 0 auto;
+  overflow: visible !important;
+  margin: 0 auto;
 }
 
-/* Slide wrapper and slides */
-
+/* Estructura base en modo estático */
 .sl-slider,
 .sl-slide,
 .sl-slides-wrapper,
 .sl-slide-inner {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	background: #fff;
-} 
-
-.demo-1 .sl-slide blockquote {
-	width: 50%;
-	left: 25%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
 }
 
+/* Ajuste de fondo para demo-2 en modo sin JS */
 .demo-2 .bg-img {
-	padding: 0;
-	top: 0;
-	left: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
 }
 
+/* Oculta controles de navegación cuando no hay JS */
 .nav-arrows,
 .nav-dots {
-	display: none;
+  display: none;
 }
