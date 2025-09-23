@@ -36,27 +36,24 @@
 
 <!-- Modal mapa grande -->
 <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header" style="border:0;">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="mapModalLabel">Ubicación Ingosur</h4>
-      </div>
-      <div class="modal-body" style="padding:0;">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe
-            class="embed-responsive-item"
-            src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=16&output=embed"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border:0;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="mapModalLabel">Ubicación Ingosur</h4>
+            </div>
+            <div class="modal-body" style="padding:0;">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                        src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=16&output=embed"
+                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
@@ -217,94 +214,85 @@
             </div>
         </div>
 
-     <div class="container contact-info">
-                <div class="row">
-                    <div class="col-sm-4 col-md-4">
-                        <div class="contact-form">
-                            <h3>Información de contacto</h3>
+        <div class="container contact-info">
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <div class="contact-form">
+                        <h3>Información de contacto</h3>
 
-                            <address>
-                                <strong>Avenida de Bruselas, 1</strong><br>
-                                23740, Andújar (Jaén)<br>
-                                España<br>
-                                <abbr title="Phone">Tfno:</abbr> 629240021
-                            </address>
+                        <address>
+                            <strong>Avenida de Bruselas, 1</strong><br>
+                            23740, Andújar (Jaén)<br>
+                            España<br>
+                            <abbr title="Phone">Tfno:</abbr> 629240021
+                        </address>
 
-                            <!-- Mapa pequeño + botón ampliar -->
-                            <div class="mini-mapa">
-                                <div class="mini-mapa-frame">
-                                    <iframe
-                                        src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=15&output=embed"
-                                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                                    </iframe>
-                                </div>
-                                <button class="btn btn-default btn-sm mapa-btn" data-toggle="modal"
-                                    data-target="#mapModal">
-                                    📍 Ver mapa grande
-                                </button>
+                        <!-- Mapa pequeño + botón ampliar -->
+                        <div class="mini-mapa">
+                            <div class="mini-mapa-frame">
+                                <iframe
+                                    src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=15&output=embed"
+                                    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
                             </div>
-
+                            <button class="btn btn-default btn-sm mapa-btn" data-toggle="modal" data-target="#mapModal">
+                                📍 Ver mapa grande
+                            </button>
                         </div>
-                    </div>
-                    <div class="col-sm-8 col-md-8">
-                        <div class="contact-form">
-                            <form id="contactForm">
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Tu email"
-                                        required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="subject" class="form-control" placeholder="Asunto"
-                                        required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea name="message" class="form-control" rows="8"
-                                        placeholder="Escribe tu mensaje" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-                            </form>
-                        </div>
-
-                        <script>
-                            const TO = "ingosursa@gmail.com"; // tu email receptor
-
-                            document.getElementById("contactForm").addEventListener("submit", (e) => {
-                                e.preventDefault();
-                                const f = e.target;
-                                const subject = f.subject.value.trim();
-                                const message = f.message.value.trim();
-                                if (!subject || !message) return;
-
-                                // Asunto = lo que pone en el campo
-                                const emailSubject = subject;
-
-                                // Cuerpo = solo el mensaje
-                                const body = message;
-
-                                // Gmail compose
-                                const gmailURL =
-                                    "https://mail.google.com/mail/?view=cm&fs=1" +
-                                    `&to=${encodeURIComponent(TO)}` +
-                                    `&su=${encodeURIComponent(emailSubject)}` +
-                                    `&body=${encodeURIComponent(body)}`;
-
-                                const win = window.open(gmailURL, "_blank", "noopener");
-
-                                // Fallback a mailto
-                                if (!win || win.closed || typeof win.closed === "undefined") {
-                                    const mailto =
-                                        `mailto:${encodeURIComponent(TO)}?` +
-                                        `subject=${encodeURIComponent(emailSubject)}` +
-                                        `&body=${encodeURIComponent(body)}`;
-                                    window.location.href = mailto;
-                                }
-                            });
-                        </script>
-
 
                     </div>
                 </div>
+                <div class="col-sm-8 col-md-8">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Tu email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" class="form-control" rows="8" placeholder="Escribe tu mensaje"
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                        </form>
+                    </div>
+
+                    <script>
+                        const TO = "ingosursa@gmail.com"; // receptor
+
+                        document.getElementById("contactForm").addEventListener("submit", (e) => {
+                            e.preventDefault();
+                            const f = e.target;
+                            const subject = f.subject.value.trim();
+                            const message = f.message.value.trim();
+                            if (!subject || !message) return;
+
+                            // Gmail compose (forzado)
+                            const gmailURL =
+                                "https://mail.google.com/mail/?view=cm&fs=1&tf=cm" +   // <-- tf=cm
+                                `&to=${encodeURIComponent(TO)}` +
+                                `&su=${encodeURIComponent(subject)}` +
+                                `&body=${encodeURIComponent(message)}`;
+
+                            // En móvil mejor usar la misma pestaña:
+                            try {
+                                window.location.assign(gmailURL);
+                            } catch (err) {
+                                // Fallback universal
+                                const mailto =
+                                    `mailto:${encodeURIComponent(TO)}?` +
+                                    `subject=${encodeURIComponent(subject)}` +
+                                    `&body=${encodeURIComponent(message)}`;
+                                window.location.href = mailto;
+                            }
+                        });
+                    </script>
+
+                </div>
             </div>
+        </div>
         </div>
     </section><!--/#bottom-->
 
@@ -320,62 +308,62 @@
         </div>
     </footer>
 
-<script src="js/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
 
-<script src="js/bootstrap.min.js"></script>
-<script src="js/mousescroll.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/jquery.isotope.min.js"></script>
-<script src="js/jquery.inview.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/jquery.ba-cond.min.js"></script>
-<script src="js/jquery.slitslider.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/mousescroll.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.inview.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.ba-cond.min.js"></script>
+    <script src="js/jquery.slitslider.js"></script>
 
-<!-- Sustituye slitslider-custom.js por este bloque o deja slitslider-custom.js vacío -->
-<script>
-  $(function () {
-    var $wrapper = $('#slider');
-    var $track   = $wrapper.find('.sl-slider'); // pista interna
-    var $dots    = $('#nav-dots > span');
+    <!-- Sustituye slitslider-custom.js por este bloque o deja slitslider-custom.js vacío -->
+    <script>
+        $(function () {
+            var $wrapper = $('#slider');
+            var $track = $wrapper.find('.sl-slider'); // pista interna
+            var $dots = $('#nav-dots > span');
 
-    var slider = $wrapper.slitslider({
-      autoplay: true,
-      interval: 5000,
-      onBeforeChange: function (slide, pos) {
-        $dots.removeClass('nav-dot-current');
-        $dots.eq(pos).addClass('nav-dot-current');
-      }
-    });
+            var slider = $wrapper.slitslider({
+                autoplay: true,
+                interval: 5000,
+                onBeforeChange: function (slide, pos) {
+                    $dots.removeClass('nav-dot-current');
+                    $dots.eq(pos).addClass('nav-dot-current');
+                }
+            });
 
-    // Dots
-    $dots.each(function (i) {
-      $(this).on('click', function (e) {
-        e.preventDefault();
-        if (!slider.isActive()) {
-          $dots.removeClass('nav-dot-current');
-          $(this).addClass('nav-dot-current');
-        }
-        slider.jump(i + 1);
-      });
-    });
+            // Dots
+            $dots.each(function (i) {
+                $(this).on('click', function (e) {
+                    e.preventDefault();
+                    if (!slider.isActive()) {
+                        $dots.removeClass('nav-dot-current');
+                        $(this).addClass('nav-dot-current');
+                    }
+                    slider.jump(i + 1);
+                });
+            });
 
-    // Swipe: pista interna (más fiable) + wrapper como respaldo
-    var swipeOpts = {
-      allowPageScroll: 'vertical',
-      threshold: 30, // sensibilidad
-      swipe: function (event, direction) {
-        if (direction === 'left')  slider.next();
-        if (direction === 'right') slider.previous();
-      }
-    };
-    $track.swipe(swipeOpts);
-    $wrapper.swipe(swipeOpts); // fallback por si algún overlay tapa la pista
-  });
-</script>
+            // Swipe: pista interna (más fiable) + wrapper como respaldo
+            var swipeOpts = {
+                allowPageScroll: 'vertical',
+                threshold: 30, // sensibilidad
+                swipe: function (event, direction) {
+                    if (direction === 'left') slider.next();
+                    if (direction === 'right') slider.previous();
+                }
+            };
+            $track.swipe(swipeOpts);
+            $wrapper.swipe(swipeOpts); // fallback por si algún overlay tapa la pista
+        });
+    </script>
 
-<script src="js/custom-scripts.js"></script>
+    <script src="js/custom-scripts.js"></script>
 
 </body>
 
