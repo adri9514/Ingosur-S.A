@@ -260,7 +260,7 @@
                     </div>
 
                     <script>
-                        const TO = "ingosursa@gmail.com"; // receptor
+                        const TO = "ingosursa@gmail.com";
 
                         document.getElementById("contactForm").addEventListener("submit", (e) => {
                             e.preventDefault();
@@ -269,26 +269,37 @@
                             const message = f.message.value.trim();
                             if (!subject || !message) return;
 
-                            // Gmail compose (forzado)
-                            const gmailURL =
-                                "https://mail.google.com/mail/?view=cm&fs=1&tf=cm" +   // <-- tf=cm
-                                `&to=${encodeURIComponent(TO)}` +
-                                `&su=${encodeURIComponent(subject)}` +
-                                `&body=${encodeURIComponent(message)}`;
+                            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-                            // En móvil mejor usar la misma pestaña:
-                            try {
-                                window.location.assign(gmailURL);
-                            } catch (err) {
-                                // Fallback universal
+                            if (isMobile) {
+                                // En móvil, usa mailto para abrir directamente el compositor de la app
                                 const mailto =
                                     `mailto:${encodeURIComponent(TO)}?` +
                                     `subject=${encodeURIComponent(subject)}` +
                                     `&body=${encodeURIComponent(message)}`;
-                                window.location.href = mailto;
+                                window.location.href = mailto; // misma pestaña
+                            } else {
+                                // En escritorio, fuerza Redactar de Gmail web
+                                const gmailURL =
+                                    "https://mail.google.com/mail/?view=cm&fs=1&tf=cm" +
+                                    `&to=${encodeURIComponent(TO)}` +
+                                    `&su=${encodeURIComponent(subject)}` +
+                                    `&body=${encodeURIComponent(message)}`;
+
+                                // abrir en una nueva pestaña (menos bloqueos en desktop)
+                                const w = window.open(gmailURL, "_blank", "noopener");
+                                if (!w || w.closed || typeof w.closed === "undefined") {
+                                    // Fallback por si el navegador bloquea
+                                    const mailto =
+                                        `mailto:${encodeURIComponent(TO)}?` +
+                                        `subject=${encodeURIComponent(subject)}` +
+                                        `&body=${encodeURIComponent(message)}`;
+                                    window.location.href = mailto;
+                                }
                             }
                         });
                     </script>
+
 
                 </div>
             </div>
