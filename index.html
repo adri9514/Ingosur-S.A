@@ -236,42 +236,65 @@
                     </div>
 
                     <script>
-                        const TO = "ingosursa@gmail.com";
+                        (function () {
+                            const TO = "ingosursa@gmail.com";
+                            const form = document.getElementById("contactForm");
 
-                        document.getElementById("contactForm").addEventListener("submit", (e) => {
-                            e.preventDefault();
+                            function urls(subject, message) {
+                                const mailto =
+                                    `mailto:${encodeURIComponent(TO)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
 
-                            const f = e.target;
-                            const subject = f.subject.value.trim();
-                            const message = f.message.value.trim();
-                            if (!subject || !message) return;
+                                const gmailWeb =
+                                    "https://mail.google.com/mail/?" +
+                                    "view=cm&fs=1" +
+                                    "&to=" + encodeURIComponent(TO) +
+                                    "&su=" + encodeURIComponent(subject) +
+                                    "&body=" + encodeURIComponent(message);
 
-                            // 1) Abrir Gmail web en COMPOSE en pestaña nueva
-                            const gmailWeb = "https://mail.google.com/mail/?" +
-                                "view=cm&fs=1" + // compose en modal
-                                "&to=" + encodeURIComponent(TO) +
-                                "&su=" + encodeURIComponent(subject) +
-                                "&body=" + encodeURIComponent(message);
+                                const gmailIOS =
+                                    "googlegmail://co?to=" + encodeURIComponent(TO) +
+                                    "&subject=" + encodeURIComponent(subject) +
+                                    "&body=" + encodeURIComponent(message);
 
-                            const win = window.open(gmailWeb, "_blank", "noopener,noreferrer");
-
-                            // 2) Si el navegador bloquea popups, fallback a mailto en pestaña nueva
-                            if (!win || win.closed || typeof win.closed === "undefined") {
-                                const a = document.createElement("a");
-                                a.href = `mailto:${encodeURIComponent(TO)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-                                a.target = "_blank";
-                                a.rel = "noopener";
-                                a.style.display = "none";
-                                document.body.appendChild(a);
-                                a.click();
-                                a.remove();
+                                return { mailto, gmailWeb, gmailIOS };
                             }
 
-                            // Mantén anclada la sección por si el usuario recarga
-                            if (location.hash !== "#contact-us") {
-                                history.replaceState(null, "", "#contact-us");
-                            }
-                        });
+                            form.addEventListener("submit", function (e) {
+                                e.preventDefault();
+
+                                const subject = this.subject.value.trim();
+                                const message = this.message.value.trim();
+                                if (!subject || !message) return;
+
+                                const ua = navigator.userAgent;
+                                const isIOS = /iPad|iPhone|iPod/.test(ua);
+                                const isAndroid = /Android/i.test(ua);
+                                const { mailto, gmailWeb, gmailIOS } = urls(subject, message);
+
+                                if (isIOS) {
+                                    // 1) Intento app Gmail
+                                    location.href = gmailIOS;
+                                    // 2) Fallbacks
+                                    setTimeout(() => { location.href = mailto; }, 350);
+                                    setTimeout(() => {
+                                        window.open(gmailWeb, "_blank", "noopener,noreferrer") || (location.href = gmailWeb);
+                                    }, 700);
+                                } else if (isAndroid) {
+                                    // 1) App por defecto (normalmente Gmail) -> compose directo
+                                    location.href = mailto;
+                                    // 2) Si el navegador lo bloquea, abre Gmail web en compose
+                                    setTimeout(() => {
+                                        window.open(gmailWeb, "_blank", "noopener,noreferrer") || (location.href = gmailWeb);
+                                    }, 400);
+                                } else {
+                                    // Escritorio
+                                    window.open(gmailWeb, "_blank", "noopener,noreferrer") || (location.href = gmailWeb);
+                                }
+
+                                // Mantén la página anclada a la sección de contacto si el usuario vuelve
+                                if (location.hash !== "#contact-us") history.replaceState(null, "", "#contact-us");
+                            });
+                        })();
                     </script>
 
                 </div>
