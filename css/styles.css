@@ -1190,3 +1190,26 @@ body { background-color: #fff; }
 .sl-slider-wrapper, .sl-slider {
   width: 100% !important;
 }
+
+.mini-mapa {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.mini-mapa img {
+  width: 100%;
+  max-width: 300px;   /* ajusta el tamaño del mapa */
+  border: 2px solid #fff;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.mini-mapa img:hover {
+  transform: scale(1.05);
+}
+
+.mapa-texto {
+  font-size: 13px;
+  margin-top: 6px;
+  color: #fff;
+}

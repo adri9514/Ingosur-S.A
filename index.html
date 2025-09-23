@@ -34,6 +34,31 @@
 
 </head>
 
+<!-- Modal mapa grande -->
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="border:0;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="mapModalLabel">Ubicación Ingosur</h4>
+      </div>
+      <div class="modal-body" style="padding:0;">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            class="embed-responsive-item"
+            src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=16&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <body id="home">
     <!-- Topbar -->
     <div id="topbar">
@@ -203,6 +228,21 @@
                                 España<br>
                                 <abbr title="Phone">Tfno:</abbr> 629240021
                             </address>
+
+                            <!-- Mapa pequeño + botón ampliar -->
+                            <div class="mini-mapa">
+                                <div class="mini-mapa-frame">
+                                    <iframe
+                                        src="https://maps.google.com/maps?q=Avenida%20de%20Bruselas%201%2C%20And%C3%BAjar&z=15&output=embed"
+                                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+                                <button class="btn btn-default btn-sm mapa-btn" data-toggle="modal"
+                                    data-target="#mapModal">
+                                    📍 Ver mapa grande
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-sm-8 col-md-8">
