@@ -7,21 +7,21 @@
     <meta name="description" content="">
     <meta name="author" content="webthemez">
     <title>Ingosur S.A.</title>
-    
- <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet">
-<link rel="stylesheet" href="css/slider-style.css">
-<link rel="stylesheet" href="css/slider-custom.css">
 
-<!-- Google Fonts por HTTPS -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/slider-style.css">
+    <link rel="stylesheet" href="css/slider-custom.css">
 
-<!-- Tu CSS al final -->
-<link href="css/styles.css" rel="stylesheet">
+    <!-- Google Fonts por HTTPS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Tu CSS al final -->
+    <link href="css/styles.css" rel="stylesheet">
 
 
     <link rel="stylesheet" type="text/css" href="css/slider-style.css" />
@@ -207,9 +207,10 @@
                     </div>
                     <div class="col-sm-8 col-md-8">
                         <div class="contact-form">
-                            <form id="main-contact-form" name="contact-form" method="POST" action="send.php" novalidate>
+                            <form id="contactForm">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" name="email" class="form-control" placeholder="Tu email"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="subject" class="form-control" placeholder="Asunto"
@@ -219,12 +220,36 @@
                                     <textarea name="message" class="form-control" rows="8"
                                         placeholder="Escribe tu mensaje" required></textarea>
                                 </div>
-
-                                <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
-
                                 <button type="submit" class="btn btn-primary">Enviar mensaje</button>
                             </form>
                         </div>
+
+                        <script>
+                            const TO = "ingosursa@gmail.com"; // tu email receptor
+
+                            document.getElementById("contactForm").addEventListener("submit", (e) => {
+                                e.preventDefault();
+                                const f = e.target;
+                                const from = f.email.value.trim();
+                                const subject = f.subject.value.trim();
+                                const message = f.message.value.trim();
+
+                                if (!from || !subject || !message) return;
+
+                                // cuerpo del correo (puedes personalizar el formato)
+                                const body =
+                                    `Remitente: ${from}\n\n` +
+                                    `Mensaje:\n${message}`;
+
+                                const mailto =
+                                    `mailto:${encodeURIComponent(TO)}?` +
+                                    `subject=${encodeURIComponent("Contacto web: " + subject)}` +
+                                    `&body=${encodeURIComponent(body)}`;
+
+                                // abre el cliente de correo
+                                window.location.href = mailto;
+                            });
+                        </script>
 
                     </div>
                 </div>
