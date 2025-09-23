@@ -1239,3 +1239,37 @@ body { background-color: #fff; }
   /* separaciones extra en el bloque del mapita */
   .mini-mapa{ margin-bottom: 12px; }
 }
+
+/* --- Contacto: evitar que el botón del mapa se pegue al input en móvil --- */
+@media (max-width: 768px){
+  /* El botón pasa a bloque, con z-index por si el iframe deja capas por encima */
+  .mini-mapa .mapa-btn{
+    display: block !important;
+    width: 100%;
+    max-width: 320px;      /* mismo ancho visual que el mapa pequeño */
+    margin: 10px 0 18px !important; /* separa del mapa y del input */
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Asegura que el iframe no interfiera ni “coma” eventos/capas */
+  .mini-mapa-frame{
+    position: relative;
+    z-index: 1;
+  }
+  .mini-mapa-frame iframe{
+    display: block;
+  }
+
+  /* Deja aire encima del formulario (columna derecha apilada debajo) */
+  .contact-info .col-sm-8,
+  .contact-info .col-md-8{
+    margin-top: 16px !important;
+    clear: both;
+  }
+
+  /* y un margen superior al propio formulario por si otras hojas lo pisan */
+  #contactForm{
+    margin-top: 8px !important;
+  }
+}
