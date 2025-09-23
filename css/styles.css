@@ -1113,3 +1113,58 @@ font-size: var(--topbar-fs);
 #our-team .container{
   max-width: 1400px;          /* o 1600px/100% si la quieres aún mayor */
 }
+
+/* ==== Parche global anti scroll lateral en móvil ==== */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Las imágenes nunca deben superar el ancho del contenedor */
+img,
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Evita que contenedores saquen 1-2px extra por padding/transform */
+.container,
+#topbar,
+#main-nav,
+.navbar,
+.sl-slider-wrapper,
+.sl-slide,
+.bg-img {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ==== NAV / TOPBAR: reducir paddings y logo en móvil ==== */
+@media (max-width: 768px){
+  /* ya pones --topbar-h:40px; ajustamos el padding-top del body */
+  body { padding-top: calc(56px + var(--topbar-h)); }
+
+  .navbar.navbar-default .navbar-brand { padding: 12px 16px; }
+  .brand-logo { height: 40px; }
+
+  #main-nav.navbar-default .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+  }
+}
+
+/* ==== PRODUCTOS: que no se desborde en móvil ==== */
+@media (max-width: 992px){
+  #about .img-productos{
+    width: 100% !important;     /* antes: 150% */
+    max-width: 100% !important; /* evita que sobresalga */
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* (opcional) slider: pequeños ajustes para evitar 1px fantasma */
+.sl-slider-wrapper, .sl-slider {
+  width: 100% !important;
+}
