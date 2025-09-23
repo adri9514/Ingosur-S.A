@@ -264,39 +264,36 @@
 
                         document.getElementById("contactForm").addEventListener("submit", (e) => {
                             e.preventDefault();
+
                             const f = e.target;
                             const subject = f.subject.value.trim();
                             const message = f.message.value.trim();
                             if (!subject || !message) return;
 
-                            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                            const mailto = `mailto:${encodeURIComponent(TO)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
 
-                            if (isMobile) {
-                                // En móvil, usa mailto para abrir directamente el compositor de la app
-                                const mailto =
-                                    `mailto:${encodeURIComponent(TO)}?` +
-                                    `subject=${encodeURIComponent(subject)}` +
-                                    `&body=${encodeURIComponent(message)}`;
-                                window.location.href = mailto; // misma pestaña
-                            } else {
-                                // En escritorio, fuerza Redactar de Gmail web
-                                const gmailURL =
-                                    "https://mail.google.com/mail/?view=cm&fs=1&tf=cm" +
-                                    `&to=${encodeURIComponent(TO)}` +
-                                    `&su=${encodeURIComponent(subject)}` +
-                                    `&body=${encodeURIComponent(message)}`;
-
-                                // abrir en una nueva pestaña (menos bloqueos en desktop)
-                                const w = window.open(gmailURL, "_blank", "noopener");
-                                if (!w || w.closed || typeof w.closed === "undefined") {
-                                    // Fallback por si el navegador bloquea
-                                    const mailto =
-                                        `mailto:${encodeURIComponent(TO)}?` +
-                                        `subject=${encodeURIComponent(subject)}` +
-                                        `&body=${encodeURIComponent(message)}`;
-                                    window.location.href = mailto;
-                                }
+                            // 1) iOS: intenta abrir la app de Gmail si existe
+                            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                            if (isiOS) {
+                                const gmailIOS = `googlegmail://co?to=${encodeURIComponent(TO)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+                                // Intento app Gmail (iOS). Si no está instalada, caemos a mailto y luego a Gmail web.
+                                window.location.href = gmailIOS;
+                                setTimeout(() => window.location.href = mailto, 350);
+                                setTimeout(() => {
+                                    const gmailWeb = "https://mail.google.com/mail/?extsrc=mailto&url=" + encodeURIComponent(mailto);
+                                    window.location.href = gmailWeb;
+                                }, 700);
+                                return;
                             }
+
+                            // 2) Android y resto: primero mailto (debería abrir la app por defecto)
+                            window.location.href = mailto;
+
+                            // 3) Si el navegador no cambió de página (bloqueo/handler web), fuerza Gmail web en COMPOSE
+                            setTimeout(() => {
+                                const gmailWeb = "https://mail.google.com/mail/?extsrc=mailto&url=" + encodeURIComponent(mailto);
+                                window.location.href = gmailWeb;
+                            }, 400);
                         });
                     </script>
 
