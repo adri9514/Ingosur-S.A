@@ -235,65 +235,85 @@
                         </form>
                     </div>
 
-                    <script>
-                        (function () {
-                            const TO = "ingosursa@gmail.com";
-                            const form = document.getElementById("contactForm");
+                  <script>
+(function () {
+  const TO = "ingosursa@gmail.com";
+  const form = document.getElementById("contactForm");
 
-                            function build(subject, message) {
-                                const mailto =
-                                    `mailto:${encodeURIComponent(TO)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  function gmailWebCompose(subject, body) {
+    // Forzamos la vista de redacción
+    return "https://mail.google.com/mail/u/0/?" +
+      "view=cm&fs=1&tf=cm" +
+      "&to=" + encodeURIComponent(TO) +
+      "&su=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+  }
 
-                                // Compose fiable para iOS (y también ok en Android/escritorio):
-                                // Gmail abre la redacción usando la URL mailto encapsulada.
-                                const gmailFromMailto =
-                                    "https://mail.google.com/mail/?extsrc=mailto&url=" + encodeURIComponent(mailto);
+  function gmailIOSCompose(subject, body) {
+    // Esquema oficial iOS para Gmail
+    return "googlegmail://co?to=" + encodeURIComponent(TO) +
+           "&subject=" + encodeURIComponent(subject) +
+           "&body=" + encodeURIComponent(body);
+  }
 
-                                // Compose directo clásico de Gmail Web (lo dejamos como alternativa):
-                                const gmailWeb =
-                                    "https://mail.google.com/mail/?view=cm&fs=1" +
-                                    "&to=" + encodeURIComponent(TO) +
-                                    "&su=" + encodeURIComponent(subject) +
-                                    "&body=" + encodeURIComponent(message);
+  function mailtoURL(subject, body) {
+    return "mailto:" + encodeURIComponent(TO) +
+           "?subject=" + encodeURIComponent(subject) +
+           "&body=" + encodeURIComponent(body);
+  }
 
-                                return { mailto, gmailFromMailto, gmailWeb };
-                            }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const subject = this.subject.value.trim();
+    const message = this.message.value.trim();
+    if (!subject || !message) return;
 
-                            form.addEventListener("submit", function (e) {
-                                e.preventDefault();
-                                const subject = this.subject.value.trim();
-                                const message = this.message.value.trim();
-                                if (!subject || !message) return;
+    const ua = navigator.userAgent;
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+    const isAndroid = /Android/i.test(ua);
 
-                                const ua = navigator.userAgent;
-                                const isIOS = /iPad|iPhone|iPod/.test(ua);
-                                const isAndroid = /Android/i.test(ua);
-                                const { mailto, gmailFromMailto, gmailWeb } = build(subject, message);
+    const ios = gmailIOSCompose(subject, message);
+    const web = gmailWebCompose(subject, message);
+    const mailto = mailtoURL(subject, message);
 
-                                if (isIOS) {
-                                    // iOS: abrir Gmail Web compose (método más robusto)
-                                    const win = window.open(gmailFromMailto, "_blank", "noopener,noreferrer");
-                                    if (!win) {
-                                        // Si bloquea el popup, navega en la misma pestaña
-                                        location.href = gmailFromMailto;
-                                    }
-                                } else if (isAndroid) {
-                                    // Android: primero mailto (suele abrir Gmail app en redactar)
-                                    location.href = mailto;
-                                    // Si no hay handler o lo ignora, forzamos Gmail Web compose
-                                    setTimeout(() => {
-                                        window.open(gmailFromMailto, "_blank", "noopener,noreferrer") || (location.href = gmailFromMailto);
-                                    }, 400);
-                                } else {
-                                    // Escritorio: Gmail Web compose en pestaña nueva
-                                    window.open(gmailWeb, "_blank", "noopener,noreferrer") || (location.href = gmailWeb);
-                                }
+    if (isIOS) {
+      // 1) Intentar app de Gmail
+      let switched = false;
+      const onHide = () => { switched = true; };
+      document.addEventListener("visibilitychange", onHide, { once: true });
 
-                                // Mantén anclada la sección al volver
-                                if (location.hash !== "#contact-us") history.replaceState(null, "", "#contact-us");
-                            });
-                        })();
-                    </script>
+      // Debe ejecutarse en el mismo gesto de usuario
+      window.location.href = ios;
+
+      // 2) Si no “desaparecimos” (no se abrió la app), forzar Gmail Web compose
+      setTimeout(() => {
+        if (!switched) {
+          // Intento en la misma pestaña (mejor en iOS)
+          window.location.href = web;
+
+          // 3) Último fallback: mailto (app de Correo por defecto)
+          setTimeout(() => {
+            if (!document.hidden) window.location.href = mailto;
+          }, 900);
+        }
+      }, 800);
+    } else if (isAndroid) {
+      // Android: mailto suele abrir Gmail app en redactar
+      window.location.href = mailto;
+      setTimeout(() => {
+        // Si no hay handler, abre Gmail Web compose
+        window.open(web, "_blank", "noopener,noreferrer") || (location.href = web);
+      }, 500);
+    } else {
+      // Escritorio: Gmail Web compose
+      window.open(web, "_blank", "noopener,noreferrer") || (location.href = web);
+    }
+
+    // Mantén anclada la sección al volver
+    if (location.hash !== "#contact-us") history.replaceState(null, "", "#contact-us");
+  });
+})();
+</script>
 
                 </div>
             </div>
