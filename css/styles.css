@@ -131,62 +131,25 @@ a:focus{
   background: transparent;
 }
 
-/* ===== Navbar móvil ===== */
-@media only screen and (max-width:768px){
-  /* ajusta el espacio superior total en móviles */
-  body { padding-top: 90px; }
-
-  /* navbar: mismo gris que en escritorio */
-  #main-nav.navbar-default {
-    background: #474545;            /* antes: #FFFFFF */
-    padding: 8px 0 12px;
-    border-bottom: 1px solid rgba(0,0,0,.06);
+/* ===== Contacto (móvil): fondo morado completo ===== */
+@media (max-width: 768px){
+  #contact-us{
+    background-color: var(--brand) !important; /* morado */
+    background-image: none !important;         /* sin mapa de fondo */
   }
 
-  /* fondo del menú colapsado (desplegable) */
-  #main-nav .navbar-collapse { 
-    background: #474545;
-  }
+  /* Asegura títulos blancos en esta sección (por encima del estilo general) */
+  #contact-us .section-title{ color:#fff !important; }
 
-  /* botón hamburguesa visible sobre fondo oscuro */
-  .navbar-default .navbar-toggle { 
-    border-color: transparent; 
-    margin-top: 6px;
-  }
-  .navbar-default .navbar-toggle .icon-bar { 
-    background-color: #fff; 
-  }
+  /* Opcional: un poco menos de aire si lo ves muy largo */
+  /* #contact-us { padding: 80px 0 20px; } */
 
-  /* links del menú en móvil */
-  #main-nav.navbar-default .navbar-nav > li > a{
-    padding-top: 12px;
-    padding-bottom: 12px;
-    font-size: 16px;
-    color: #fff;                     /* antes: var(--brand) */
+  /* El bloque interno ya es morado; si quieres que se “funda” más: */
+  .contact-info{
+    background: var(--brand);
+    /* quita el margen inferior si deseas que la franja morada llegue al footer */
+    /* margin-bottom: 0; */
   }
-
-  /* estados activo/hover en móvil (sin banda superior) */
-  #main-nav.navbar-default .navbar-nav > li.active > a,
-  #main-nav.navbar-default .navbar-nav > li.open > a,
-  #main-nav.navbar-default .navbar-nav > li:hover > a{
-    background: rgba(255,255,255,.12);
-    color: #fff;
-    border-top-color: transparent;
-  }
-
-  /* contenedores a 100% */
-  #topbar .container,
-  #main-nav .container{
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    overflow: hidden !important;
-  }
-
-  /* logo un poco más pequeño en móvil */
-  .navbar.navbar-default .navbar-brand{ padding: 10px 14px !important; }
-  .brand-logo{ height: 40px !important; width: auto; }
 }
 
 /* ===== Botones / utilidades simples ===== */
