@@ -846,10 +846,26 @@ li.plan-purchase .btn {
 #pricing ul.pricing.featured li.plan-header .plan-name {
   color: #234259;
 }
-#contact-us {
+/* CONTACTO: centrar el mapa de fondo */
+#contact-us{
   padding: 100px 0 10px;
-  background: #000 url('../images/map-image.png') top left no-repeat;
+  background-color: #000;
+  background-image: url('../images/map-image.png');
+  background-repeat: no-repeat;
+  background-position: center center;   /* centrado horizontal y vertical */
+  background-size: contain;             /* que quepa completo; prueba 'cover' si lo quieres a pantalla completa */
 }
+
+/* Opcional: ajusta el tamaño en desktop para que se vea más grande */
+@media (min-width: 992px){
+  #contact-us{ background-size: 1200px auto; }  /* o 100% auto / cover */
+}
+
+/* Opcional: en móvil reduce para que no se corte */
+@media (max-width: 576px){
+  #contact-us{ background-size: 90% auto; } 
+}
+
 #contact-us h1,
 #contact-us h2, #contact-us p {
   color: #fff;
