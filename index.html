@@ -320,18 +320,63 @@
         </div>
     </footer>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mousescroll.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/jquery.ba-cond.min.js"></script>
-    <script type="text/javascript" src="js/jquery.slitslider.js"></script>
-    <script type="text/javascript" src="js/slitslider-custom.js"></script>
-    <script src="js/custom-scripts.js"></script>
+<script src="js/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/mousescroll.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/jquery.inview.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.ba-cond.min.js"></script>
+<script src="js/jquery.slitslider.js"></script>
+
+<!-- Sustituye slitslider-custom.js por este bloque o deja slitslider-custom.js vacío -->
+<script>
+  $(function () {
+    var $wrapper = $('#slider');
+    var $track   = $wrapper.find('.sl-slider'); // pista interna
+    var $dots    = $('#nav-dots > span');
+
+    var slider = $wrapper.slitslider({
+      autoplay: true,
+      interval: 5000,
+      onBeforeChange: function (slide, pos) {
+        $dots.removeClass('nav-dot-current');
+        $dots.eq(pos).addClass('nav-dot-current');
+      }
+    });
+
+    // Dots
+    $dots.each(function (i) {
+      $(this).on('click', function (e) {
+        e.preventDefault();
+        if (!slider.isActive()) {
+          $dots.removeClass('nav-dot-current');
+          $(this).addClass('nav-dot-current');
+        }
+        slider.jump(i + 1);
+      });
+    });
+
+    // Swipe: pista interna (más fiable) + wrapper como respaldo
+    var swipeOpts = {
+      allowPageScroll: 'vertical',
+      threshold: 30, // sensibilidad
+      swipe: function (event, direction) {
+        if (direction === 'left')  slider.next();
+        if (direction === 'right') slider.previous();
+      }
+    };
+    $track.swipe(swipeOpts);
+    $wrapper.swipe(swipeOpts); // fallback por si algún overlay tapa la pista
+  });
+</script>
+
+<script src="js/custom-scripts.js"></script>
+
 </body>
 
 </html>
