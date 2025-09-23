@@ -1213,3 +1213,29 @@ body { background-color: #fff; }
   margin-top: 6px;
   color: #fff;
 }
+
+/* --- Contacto: fix móvil para que no se pisen las columnas --- */
+@media (max-width: 768px){
+  /* fuerza a que las columnas ocupen 100% y la derecha empiece debajo */
+  .contact-info .row > .col-sm-4,
+  .contact-info .row > .col-md-4,
+  .contact-info .row > .col-sm-8,
+  .contact-info .row > .col-md-8{
+    float: none;
+    width: 100%;
+  }
+
+  /* asegura que la columna del formulario baje debajo de la primera */
+  .contact-info .row > .col-sm-8,
+  .contact-info .row > .col-md-8{
+    clear: both;
+  }
+
+  /* deja aire debajo del mapa/botón */
+  .contact-info .col-sm-4{
+    margin-bottom: 16px;
+  }
+
+  /* separaciones extra en el bloque del mapita */
+  .mini-mapa{ margin-bottom: 12px; }
+}
