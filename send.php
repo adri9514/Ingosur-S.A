@@ -6,9 +6,9 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '/vendor/autoload.php';
 
 // ===== CONFIGURA AQUÍ TU CUENTA GMAIL =====
-$smtpUser = 'felixexpo67@gmail.com';           // tu Gmail (mismo al que quieres recibir)
-$smtpPass = 'barbaloca1498zajuju';     // contraseña de aplicación de 16 caracteres
-$toEmail  = 'felixexpo67@gmail.com';           // destinatario (tú mismo)
+$smtpUser = 'ingosursa@gmail.com';           // tu Gmail (mismo al que quieres recibir)
+$smtpPass = 'pwxrmmmepzddzcuh';     // contraseña de aplicación de 16 caracteres
+$toEmail  = 'ingosursa@gmail.com';           // destinatario (tú mismo)
 // ==========================================
 
 // 1) Recoger y validar datos
