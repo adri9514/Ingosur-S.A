@@ -131,7 +131,6 @@ a:focus{
   background: transparent;
 }
 
-/* ===== Contacto (móvil): fondo morado completo ===== */
 @media (max-width: 768px){
   #contact-us{
     background-color: var(--brand) !important; /* morado */
@@ -141,14 +140,8 @@ a:focus{
   /* Asegura títulos blancos en esta sección (por encima del estilo general) */
   #contact-us .section-title{ color:#fff !important; }
 
-  /* Opcional: un poco menos de aire si lo ves muy largo */
-  /* #contact-us { padding: 80px 0 20px; } */
-
-  /* El bloque interno ya es morado; si quieres que se “funda” más: */
   .contact-info{
     background: var(--brand);
-    /* quita el margen inferior si deseas que la franja morada llegue al footer */
-    /* margin-bottom: 0; */
   }
 }
 
@@ -407,4 +400,18 @@ ul.nostyle{ list-style:none; padding:0; margin-bottom:20px; }
 @keyframes scaleIn{
   0%{ opacity:0; transform:scale(0); }
   100%{ opacity:1; transform:scale(1); }
+}
+
+/* --- Fix: menú móvil no se corta ni oculta items --- */
+@media (max-width: 768px){
+  /* deja de recortar el contenido del menú */
+  #main-nav .container{
+    overflow: visible !important;
+  }
+  /* si el menú se abre (collapse.in), que pueda hacer scroll si hace falta */
+  #main-nav .navbar-collapse.in{
+    max-height: 70vh;              /* puedes ajustar */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
